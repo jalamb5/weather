@@ -7,9 +7,7 @@ submitButton.onclick = function(event) {
 
 async function retrieveWeather(searchQuery) {
   try {
-    // const weatherResponse = await fetch(`https://api.weatherapi.com/v1/current.json?key=c9d1a59abb4541c3b8b165344232509&q=${searchQuery}`, {mode: 'cors'})
-    // const weather = await weatherResponse.json();
-    // displayWeather(weather);
+    cleanup();
 
     const forecastResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c9d1a59abb4541c3b8b165344232509&q=${searchQuery}&days=4`, {mode: 'cors'})
     const forecast = await forecastResponse.json();
@@ -45,13 +43,27 @@ function displayForecast(forecast) {
   forecast.forecast.forecastday.forEach((day) => {
     const dayDiv = document.createElement('div');
     dayDiv.classList.add('days');
+    const dayDate = document.createElement('p');
     const dayText = document.createElement('p');
     const dayIcon = document.createElement('img');
 
+    dayDate.textContent = day.date;
     dayText.textContent = day.day.condition.text;
     dayIcon.src = day.day.condition.icon;
 
-    dayDiv.append(dayText, dayIcon);
+    dayDiv.append(dayDate, dayIcon, dayText);
     forecastDiv.appendChild(dayDiv);
+  })
+}
+
+function cleanup() {
+  const location = document.getElementById('location');
+  const currentConditions = document.getElementById('current-conditions');
+  const forecastDiv = document.getElementById('forecast');
+
+  [location, currentConditions, forecastDiv].forEach((div) => {
+    while (div.firstChild) {
+      div.removeChild(div.firstChild);
+    }
   })
 }
