@@ -23,19 +23,20 @@ function displayWeather(weather) {
   const currentConditions = document.getElementById('current-conditions');
   const city = document.createElement('h2');
   const region = document.createElement('p');
-  const country = document.createElement('p');
+  const title = document.createElement('h3');
   const conditions = document.createElement('p');
   const conditionsIcon = document.createElement('img');
 
   city.textContent = weather.location.name;
-  region.textContent = weather.location.region;
-  country.textContent = weather.location.country;
+  region.textContent = `${weather.location.region}, ${weather.location.country}`;
+  region.classList.add('secondary');
 
+  title.textContent = 'Current Conditions';
   conditions.textContent = weather.current.condition.text;
   conditionsIcon.src = weather.current.condition.icon;
 
-  location.append(city, region, country);
-  currentConditions.append(conditions, conditionsIcon);
+  location.append(city, region);
+  currentConditions.append(title, conditions, conditionsIcon);
 };
 
 function displayForecast(forecast) {
@@ -43,7 +44,7 @@ function displayForecast(forecast) {
   forecast.forecast.forecastday.forEach((day) => {
     const dayDiv = document.createElement('div');
     dayDiv.classList.add('days');
-    const dayDate = document.createElement('p');
+    const dayDate = document.createElement('h4');
     const dayText = document.createElement('p');
     const dayIcon = document.createElement('img');
 

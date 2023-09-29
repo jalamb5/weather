@@ -2,6 +2,7 @@ body {
   display: grid;
   justify-items: center;
   grid-gap: 8px;
+  background-color: #FFF8F0;
 }
 
 #location {
@@ -22,4 +23,13 @@ body {
   justify-items: center;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
+}
+
+.days {
+  padding-top: 3rem;
+}
+
+.secondary {
+  color: rgb(127, 124, 124);
+  margin-top: -8px;
 }
