@@ -3,3 +3,17 @@ body {
   justify-items: center;
   grid-gap: 8px;
 }
+
+#forecast {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 4px;
+}
+
+.days {
+  justify-self: center;
+  align-items: center;
+  justify-items: center;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
