@@ -48,7 +48,7 @@ function displayForecast(forecast) {
     const dayText = document.createElement('p');
     const dayIcon = document.createElement('img');
 
-    dayDate.textContent = day.date;
+    dayDate.textContent = dateHandler(day.date);
     dayText.textContent = day.day.condition.text;
     dayIcon.src = day.day.condition.icon;
 
@@ -67,4 +67,10 @@ function cleanup() {
       div.removeChild(div.firstChild);
     }
   })
+}
+
+function dateHandler(dateString) {
+  const date = new Date(Date.parse(dateString));
+  const cleanDate = `${new Intl.DateTimeFormat("en-US", {month: "short"}).format(date)}. ${date.getDate()}`;
+  return cleanDate;
 }
