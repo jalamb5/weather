@@ -1,8 +1,12 @@
 body {
   display: grid;
   justify-items: center;
-  grid-gap: 8px;
-  background-color: #FFF8F0;
+  grid-gap: 1.5rem;
+  background-color: #427AA1;
+}
+
+h1, h2 {
+  color: #EBF2FA;
 }
 
 #location {
@@ -25,11 +29,21 @@ body {
   grid-template-rows: repeat(3, 1fr);
 }
 
+#current-conditions {
+  background-color: #EBF2FA;
+  border-radius: 10px;
+}
+
 .days {
-  padding-top: 3rem;
+  background-color: #EBF2FA;
+  margin-top: 1rem;
+  padding: 2rem;
+  min-width: 8rem;
+  border-radius: 10px;
 }
 
 .secondary {
-  color: rgb(127, 124, 124);
+  color: #EBF2FA;
   margin-top: -8px;
 }
+
