@@ -9,9 +9,10 @@ async function retrieveWeather(searchQuery) {
   try {
     cleanup();
 
-    const forecastResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c9d1a59abb4541c3b8b165344232509&q=${searchQuery}&days=4`, {mode: 'cors'})
+    const forecastResponse = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c9d1a59abb4541c3b8b165344232509&q=${searchQuery}&days=3`, {mode: 'cors'})
     const forecast = await forecastResponse.json();
     displayForecast(forecast);
+    console.log(forecast);
     displayWeather(forecast);
   } catch (error) {
     console.log(error.message);
@@ -26,6 +27,7 @@ function displayWeather(weather) {
   const title = document.createElement('h3');
   const conditions = document.createElement('p');
   const conditionsIcon = document.createElement('img');
+  const temperature = document.createElement('p');
 
   city.textContent = weather.location.name;
   region.textContent = `${weather.location.region}, ${weather.location.country}`;
@@ -34,9 +36,10 @@ function displayWeather(weather) {
   title.textContent = 'Current Conditions';
   conditions.textContent = weather.current.condition.text;
   conditionsIcon.src = weather.current.condition.icon;
+  temperature.textContent = `${weather.current.feelslike_f }° F / ${weather.current.feelslike_c}° C`
 
   location.append(city, region);
-  currentConditions.append(title, conditions, conditionsIcon);
+  currentConditions.append(title, conditions, conditionsIcon, temperature);
 };
 
 function displayForecast(forecast) {
